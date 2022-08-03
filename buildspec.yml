@@ -9,7 +9,7 @@ phases:
       - echo Build started on `date`
       - aws s3 cp "index.html" "s3://demo-app-54321/index.html" 
       - echo Build completed on `date`
-      - aws cloudfront create-invalidation --distribution-id E3BMY8WLRU0YL9 --paths '/*'
+      - aws cloudfront create-invalidation --distribution-id ${CDN_ID} --paths '/*'
   post_build:
     commands:
       - echo Build completed on `date`
