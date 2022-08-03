@@ -1,7 +1,7 @@
 version: 0.2
 env:
   parameter-store:
-    CDN_ID: "FRONTEND_APP_CODEPIPELINE_CDN_ID"
+    CDN_ID: "Cloudfront_Invalid"
 
 phases:
   install:
