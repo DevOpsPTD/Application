@@ -1,6 +1,7 @@
 version: 0.2
-parameter-store:
-  CDN_ID: "E13WGX34O5KP9D"
+env:
+  parameter-store:
+    CDN_ID: "E13WGX34O5KP9D"
 
 phases:
   install:
