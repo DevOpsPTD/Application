@@ -1,7 +1,7 @@
 version: 0.2
 env:
   parameter-store:
-    CDN_ID: "E13WGX34O5KP9D"
+    CDN_ID: "FRONTEND_APP_CODEPIPELINE_CDN_ID"
 
 phases:
   install:
