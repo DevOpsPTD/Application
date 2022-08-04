@@ -2,7 +2,7 @@ version: 0.2
 env:
   parameter-store:
     CDN_ID: "Cloudfront_Invalid"
-    S3Bucket: "demo-app-54321"
+    S3_BUCKET: "S3Bucket"
 
 phases:
   install:
@@ -11,7 +11,7 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - aws s3 cp "index.html" "s3://${S3Bucket}/index.html" 
+      - aws s3 cp "index.html" "s3://${S3_BUCKET}/index.html" 
       - echo Build completed on `date`
       - aws cloudfront create-invalidation --distribution-id ${CDN_ID} --paths '/*'
   post_build:
