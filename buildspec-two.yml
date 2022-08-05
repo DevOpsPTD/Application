@@ -1,0 +1,22 @@
+version: 0.2
+#env:
+ # parameter-store:
+ #   CDN_ID: "Cloudfront_Invalid"
+ #   S3_BUCKET: "S3Bucket"
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto8
+  build:
+    commands:
+      - echo Build started on `date`
+      - aws s3 cp "index.html" "s3://proddemoapplication/index.html" 
+      - echo Build completed on `date`
+   #   - aws cloudfront create-invalidation --distribution-id ${CDN_ID} --paths '/*'
+  post_build:
+    commands:
+      - echo Build completed on `date`
+artifacts:
+  files:
+      - "**/*"
