@@ -27,6 +27,7 @@ stages{
     }
    }
   stage ('Deploy To Prod'){
+      emailext body: '', subject: 'Approve for Deployment', to: 'tushali.choudhary@motherson.com'
   input{
     message "Do you want to proceed for production deployment?"
   }
