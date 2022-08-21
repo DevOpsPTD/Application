@@ -9,10 +9,10 @@ stages{
                 sh 'echo "Send Info"'
             }
     }
-    stage('Build') {
+    stage('QA') {
         steps{
              catchError {
-                sh 'echo "This is build"'
+                sh 'echo "This is QA-build"'
             }
          }
          post {
