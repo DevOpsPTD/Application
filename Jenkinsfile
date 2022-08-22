@@ -10,10 +10,6 @@ stages{
             }
     }
     stage('QA') {
-        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'Jenkins_ID', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
-            sh "aws s3 ls"
-            sh "aws s3 cp index.html s3://demo-app-54321/index.html"
-            }
         steps{
              catchError {
                 sh 'echo "This is QA-build"'
@@ -46,10 +42,6 @@ stages{
         }
   
   stage('PROD') {
-       withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'Jenkins_ID', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
-            sh "aws s3 ls"
-            sh "aws s3 cp index.html s3://proddemoapplication/index.html"
-            }
         steps{
              catchError {
                 sh 'echo "This is Prod-build"'
@@ -71,5 +63,5 @@ stages{
    }
 
  }
-
 }
+     
