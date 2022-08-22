@@ -4,15 +4,19 @@ environment {
 }
 agent any
 stages{
+    stage('Build-Initiator-Info'){
+            steps{
+                sh 'echo "Send Info"'
+            }
+    }
     stage('QA') {
         steps{
-        withCredentials([[
-            $class: 'AmazonWebServicesCredentialsBinding', 
-            accessKeyVariable: 'AWS_ACCESS_KEY_ID', 
-            credentialsId: 'Jenkins_ID', 
-            secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
-            sh "aws s3 ls"
-            sh "aws s3 cp index.html s3://demo-app-54321/index.html"
+             catchError {
+                sh 'echo "This is QA-build"'
+               
+                 
+                 
+            }
          }
          post {
             success {
@@ -39,8 +43,8 @@ stages{
   
   stage('PROD') {
         steps{
-            sh "aws s3 cp index.html s3://proddemoapplication/index.html"
-         }     
+             catchError {
+                sh 'echo "This is Prod-build"'
                
                  
                  
@@ -57,4 +61,19 @@ stages{
              }
     }
    }
+     
+stage('artifacts to s3') {
+      steps {
+      withCredentials([[
+          $class: 'AmazonWebServicesCredentialsBinding', 
+          accessKeyVariable: 'AWS_ACCESS_KEY_ID', 
+          credentialsId: 'Jenkins_ID', 
+          secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
+         sh "aws s3 ls"
+         sh "aws s3 cp index.html s3://demo-app-54321/index.html"
+         sh "aws s3 cp index.html s3://proddemoapplication/index.html"
+         }
+      }
+   }
+}
 }
