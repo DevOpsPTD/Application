@@ -4,11 +4,6 @@ environment {
 }
 agent any
 stages{
-    stage('Build-Initiator-Info'){
-            steps{
-                sh 'echo "Send Info"'
-            }
-    }
     stage('QA') {
         steps{
              catchError {
@@ -72,6 +67,10 @@ stage('artifacts to s3') {
          sh "aws s3 ls"
          sh "aws s3 cp index.html s3://demo-app-54321/index.html"
          sh "aws s3 cp index.html s3://proddemoapplication/index.html"
+     
+      create_cmd = """aws cloudfront create-invalidation --distribution-id E3QCNYF5YNO2CK --paths "/*" | jq -r .Invalidation.Id"""
+      echo create_cmd 
+      INVALIDATION_ID = sh(script: create_cmd, returnStdout: true)
          }
       }
    }
