@@ -13,7 +13,7 @@ stages{
         steps{
              catchError {
                 sh 'echo "This is QA-build"'
-                 start chrome https://www.demoapplication.ml/
+               
                  
                  
             }
