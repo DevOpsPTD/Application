@@ -13,8 +13,7 @@ stages{
         steps{
             withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'deploytos3', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
             sh "aws s3 ls"
-            sh "aws s3 cp "s3://demo-app-54321/index.html" "index.html" --recursive"
-                }
+                sh "aws s3 cp "index.html" "s3://demo-app-54321/index.html""}
              catchError {
                 sh 'echo "This is QA-build"'
                
@@ -49,8 +48,7 @@ stages{
         steps{
             withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'deploytos3', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
             sh "aws s3 ls"
-            sh "aws s3 cp "s3://proddemoapplication/index.html" "index.html" --recursive"
-                }
+                sh "aws s3 cp "index.html" "s3://proddemoapplication/index.html""}
              catchError {
                 sh 'echo "This is Prod-build"'
                
