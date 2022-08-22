@@ -4,11 +4,6 @@ environment {
 }
 agent any
 stages{
-    stage('Build-Initiator-Info'){
-            steps{
-                sh 'echo "Send Info"'
-            }
-    }
     stage('QA') {
         steps{
              catchError {
