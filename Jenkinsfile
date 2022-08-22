@@ -67,9 +67,9 @@ stage('artifacts to s3') {
          sh "aws s3 ls"
          sh "aws s3 cp index.html s3://demo-app-54321/index.html"
          sh "aws s3 cp index.html s3://proddemoapplication/index.html"
-     
+      }
+          
          sh "aws cloudfront create-invalidation --distribution-id ${CDIN_PROD} --paths '/*'"
-         }
       }
    }
 }
