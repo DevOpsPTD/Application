@@ -64,7 +64,7 @@ stages{
 
 
 }
-   }
+   
    stage('artifacts to s3') {
       try {
       // you need cloudbees aws credentials
