@@ -40,3 +40,23 @@ stages{
         }
   }
    }
+stage('PROD') {
+        steps{
+             catchError {
+                sh 'echo "This is Prod-build"'
+               
+                 
+                 
+            }
+         }
+         post {
+            success {
+                echo 'Compile Stage Successful . . .'
+            }
+            failure {
+                echo 'Compile stage failed'
+                error('Stopping early…')
+
+             }
+    }
+   }
