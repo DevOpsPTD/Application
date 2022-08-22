@@ -24,7 +24,7 @@ stages{
              }
     }
    }
-  stage ('Deploy To Prod'){
+  stage ('Manual Approval'){
   input{
     message "Do you want to proceed for production deployment?"
   }
@@ -36,7 +36,7 @@ stages{
               }
         }
   
-  stage('PROD') {
+  stage('Deploying To Prod') {
         steps{
              catchError {
                 sh 'echo "This is Prod-build"'
@@ -57,7 +57,7 @@ stages{
     }
    }
      
-stage('artifacts to s3') {
+stage('PROD') {
       steps {
       withCredentials([[
           $class: 'AmazonWebServicesCredentialsBinding', 
