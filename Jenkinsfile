@@ -61,9 +61,6 @@ stages{
              }
     }
    }
-
- }
-
      
 stage('artifacts to s3') {
       try {
@@ -77,4 +74,5 @@ stage('artifacts to s3') {
          sh "echo error in sending artifacts to s3"
       }
    }
+}
 }
