@@ -66,17 +66,3 @@ stages{
 }
    }
 
-
-  stage('artifacts to s3') {
-      try {
-      // you need cloudbees aws credentials
-      withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'deploytos3', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
-         sh "aws s3 ls"
-         sh "aws s3 cp "index.html" "s3://demo-app-54321/index.html""
-         sh "aws s3 cp "index.html" "s3://proddemoapplication/index.html""
-         }
-      } catch(err) {
-         sh "echo error in sending artifacts to s3"
-      }
-   }
-  
