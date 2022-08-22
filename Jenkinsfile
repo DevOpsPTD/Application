@@ -63,7 +63,8 @@ stages{
              }
     }
    }
-     
+}
+}
 /*stage('artifacts to s3') {
       steps {
       withCredentials([[
@@ -77,6 +78,4 @@ stages{
       }
           
       }
-   } */
-}
-}
+   } 
