@@ -38,8 +38,7 @@ stages{
 
               }
         }
-  }
-   }
+  
 stage('PROD') {
         steps{
              catchError {
@@ -59,4 +58,8 @@ stage('PROD') {
 
              }
     }
+   }
+
+
+}
    }
